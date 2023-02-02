@@ -16,6 +16,6 @@ public class FpsCounter : MonoBehaviour
     // Update is called once per frame
     void UpdateFPS()
     {
-        fpsText.text = $"FPS: {(int)(1.0f/Time.unscaledDeltaTime)}";
+        fpsText.text = $"FPS: {(int)(1.0f / Time.unscaledDeltaTime)}";
     }
 }

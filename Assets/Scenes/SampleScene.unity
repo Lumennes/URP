@@ -710,7 +710,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 356930608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f12daa364ba190a448c58ce3d887be86, type: 3}
+  m_Script: {fileID: 11500000, guid: 24a5520253b1362459c0f123c16c219c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 356930610}
@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 721762393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04f0d53602ba3047b1f59c64c5ba4f1, type: 3}
+  m_Script: {fileID: 11500000, guid: b50147c8b340dd04e8b31f0858bfefa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fpsText: {fileID: 721762396}

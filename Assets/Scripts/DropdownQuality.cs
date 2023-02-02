@@ -10,22 +10,23 @@ public class DropdownQuality : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.HasKey("QualityLevel"))
+        if (PlayerPrefs.HasKey("QualityLevel"))
         {
             int ql = PlayerPrefs.GetInt("QualityLevel");
-            if(ql != QualitySettings.GetQualityLevel())
+            if (ql != QualitySettings.GetQualityLevel())
                 QualitySettings.SetQualityLevel(ql);
         }
         else
         {
-           SaveQuality();
+            SaveQuality();
         }
 
         dropdown.SetValueWithoutNotify(QualitySettings.GetQualityLevel());
 
-        dropdown.onValueChanged.AddListener(delegate {
+        dropdown.onValueChanged.AddListener(delegate
+        {
             OnValueChanged(dropdown);
-        });       
+        });
 
         dropdown.options.Clear();
         string[] names = QualitySettings.names;
@@ -41,12 +42,12 @@ public class DropdownQuality : MonoBehaviour
     void SaveQuality()
     {
         PlayerPrefs.SetInt("QualityLevel", QualitySettings.GetQualityLevel());
-            PlayerPrefs.Save();
+        PlayerPrefs.Save();
     }
 
     // Update is called once per frame
     // void update()
     // {
-        
+
     // }
 }

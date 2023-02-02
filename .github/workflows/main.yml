@@ -1,0 +1,173 @@
+name: Builds
+
+on:
+  push:
+    branches:
+      - main
+      
+env:
+  UNITY_LICENSE: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>\n    <License id=\"Terms\">\n        <MachineBindings>\n            <Binding Key=\"1\" Value=\"576562626572264761624c65526f7578\"/>\n            <Binding Key=\"2\" Value=\"576562626572264761624c65526f7578\"/>\n        </MachineBindings>\n        <MachineID Value=\"D7nTUnjNAmtsUMcnoyrqkgIbYdM=\"/>\n        <SerialHash Value=\"2033b8ac3e6faa3742ca9f0bfae44d18f2a96b80\"/>\n        <Features>\n            <Feature Value=\"33\"/>\n            <Feature Value=\"1\"/>\n            <Feature Value=\"12\"/>\n            <Feature Value=\"2\"/>\n            <Feature Value=\"24\"/>\n            <Feature Value=\"3\"/>\n            <Feature Value=\"36\"/>\n            <Feature Value=\"17\"/>\n            <Feature Value=\"19\"/>\n            <Feature Value=\"62\"/>\n        </Features>\n        <DeveloperData Value=\"AQAAAEY0LUJHUlgtWEQ0RS1aQ1dWLUM1SlctR0RIQg==\"/>\n        <SerialMasked Value=\"F4-BGRX-XD4E-ZCWV-C5JW-XXXX\"/>\n        <StartDate Value=\"2021-02-08T00:00:00\"/>\n        <UpdateDate Value=\"2021-02-09T00:34:57\"/>\n        <InitialActivationDate Value=\"2021-02-08T00:34:56\"/>\n        <LicenseVersion Value=\"6.x\"/>\n        <ClientProvidedVersion Value=\"2018.4.30f1\"/>\n        <AlwaysOnline Value=\"false\"/>\n        <Entitlements>\n            <Entitlement Ns=\"unity_editor\" Tag=\"UnityPersonal\" Type=\"EDITOR\" ValidTo=\"9999-12-31T00:00:00\"/>\n            <Entitlement Ns=\"unity_editor\" Tag=\"DarkSkin\" Type=\"EDITOR_FEATURE\" ValidTo=\"9999-12-31T00:00:00\"/>\n        </Entitlements>\n    </License>\n<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments\"/><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\"/><Reference URI=\"#Terms\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\"/></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\"/><DigestValue>m0Db8UK+ktnOLJBtHybkfetpcKo=</DigestValue></Reference></SignedInfo><SignatureValue>o/pUbSQAukz7+ZYAWhnA0AJbIlyyCPL7bKVEM2lVqbrXt7cyey+umkCXamuOgsWPVUKBMkXtMH8L\n5etLmD0getWIhTGhzOnDCk+gtIPfL4jMo9tkEuOCROQAXCci23VFscKcrkB+3X6h4wEOtA2APhOY\nB+wvC794o8/82ffjP79aVAi57rp3Wmzx+9pe9yMwoJuljAy2sc2tIMgdQGWVmOGBpQm3JqsidyzI\nJWG2kjnc7pDXK9pwYzXoKiqUqqrut90d+kQqRyv7MSZXR50HFqD/LI69h68b7P8Bjo3bPXOhNXGR\n9YCoemH6EkfCJxp2gIjzjWW+l2Hj2EsFQi8YXw==</SignatureValue></Signature></root>"
+  
+jobs:
+  buildForAllPlatformsUbuntu:
+    name: ${{ matrix.targetPlatform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectName:
+          - D3D_2020
+        #cloudRunnerCluster:
+        #  - local-docker
+        #  - local
+        #projectPath:
+        #  - test-project
+        # unityVersion:
+          # - 2021.3.16f1
+          # - 2021.3.15f1
+          # - 2021.3.14f1
+          # - 2021.3.13f1
+          # - 2021.3.12f1
+          # - 2021.3.11f1
+          # - 2021.3.10f1
+          # - 2021.3.9f1
+          # - 2021.3.8f1
+          # - 2021.3.7f1
+          # - 2021.3.6f1
+          # - 2021.3.5f1
+          # - 2021.3.4f1
+          # - 2021.3.3f1
+          # - 2021.3.2f1
+          # - 2021.3.1f1
+          # - 2021.3.0f1
+          # - 2021.2.19f1
+          # - 2021.2.0f1
+          # - 2021.1.28f1 - не работает
+          # - 2021.0.0f1 - так же
+          # - 2022.1.24f1
+          # - 2022.1.23f1
+          # - 2022.1.22f1
+          # - 2022.1.21f1
+          # - 2022.1.20f1
+          # - 2022.1.19f1
+          # - 2022.1.18f1
+          # - 2022.1.17f1
+          # - 2022.1.16f1
+          # - 2022.1.15f1
+          # - 2022.1.14f1
+          # - 2022.1.13f1
+          # - 2022.1.12f1
+          # - 2022.1.11f1
+          # - 2022.1.10f1
+          # - 2022.1.9f1
+          # - 2022.1.8f1
+          # - 2022.1.7f1
+          # - 2022.1.6f1
+          # - 2022.1.5f1
+          # - 2022.1.4f1
+          # - 2022.1.3f1
+          # - 2022.1.2f1
+          # - 2022.1.1f1
+          # # - 2022.1.0f1
+          # - 2021.3.16f1
+          # # - 2020.3.44f1
+          # # - 2019.4.40f1
+          # # - 2018.4.36f1
+          # # - 2017.4.40f1
+          # - 5.6.7f1
+          # - 5.6.7
+          # # - 2021.3.16f1
+          # - 2021.3.15f1
+          # - 2021.3.14f1
+          # - 2021.3.13f1
+          # - 2021.3.12f1
+          # - 2021.3.11f1
+          # - 2021.3.10f1
+          # - 2021.3.9f1
+          # - 2021.3.8f1
+          # - 2021.3.7f1
+          # - 2021.3.6f1
+          # - 2021.3.5f1
+          # - 2021.3.4f1
+          # - 2021.3.3f1
+          # - 2021.3.2f1
+          # - 2021.3.1f1
+          # # - 2021.3.0f1
+          # # - 2021.2.19f1
+          # # - 2021.2.0f1
+          # # - 2021.1.28f1
+          # # - 2021.1.0f1
+          # # - 2023.1.0a26
+          # # - 2023.1.0a25
+          # # - 2023.1.0a12
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+          - iOS # Build an iOS player.
+          - Android # Build an Android .apk.
+          - WebGL # WebGL.
+          - StandaloneWindows # Build a Windows standalone.
+          # - WSAPlayer # Build an Windows Store Apps player. на винде
+          # - PS4 # Build a PS4 Standalone. // тож не выйдет
+          # - XboxOne # Build a Xbox One Standalone. // тож не выйдет
+          # - tvOS # Build to Apple's tvOS platform. на винде
+          # - Switch # Build a Nintendo Switch player вроде тож
+    steps:
+      ###########################
+      #         Checkout        #
+      ###########################
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      ###########################
+      #          Cache          #
+      ###########################
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ matrix.projectName }}-${{ matrix.targetPlatform }}-linux
+          restore-keys: |
+            Library-${{ matrix.projectName }}-${{ matrix.targetPlatform }}-
+            Library-${{ matrix.projectName }}-
+            Library-
+
+      ###########################
+      #          Build          #
+      ###########################
+      - uses: game-ci/unity-builder@v2
+        with:
+          #projectPath: ${{ matrix.projectPath }}
+          # unityVersion: ${{ matrix.unityVersion }}
+          buildName: ${{ matrix.projectName }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          buildMethod: UnityBuilderAction.BuildScript.Build
+          #customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
+          #cloudRunnerCluster: ${{ matrix.cloudRunnerCluster }}
+          # allowDirtyBuild: true
+
+      ###########################
+      #          Upload         #
+      ###########################
+      # - uses: actions/upload-artifact@v2
+        # with:
+          # name: Build
+          # path: build
+          # retention-days: 14
+          
+      - uses: Difegue/action-megacmd@master
+        with:
+          args: put -c build/${{ matrix.targetPlatform }} /Unity_projects/${{ matrix.projectName }}/2/
+        env:
+          USERNAME: ${{ secrets.MEGA_USERNAME }}
+          PASSWORD: ${{ secrets.MEGA_PASSWORD }}
+          
+      # - uses: mkrakowitzer/actions-googledrive@master
+        # with:
+          # upload-from: ./build/${{ matrix.targetPlatform }}
+          # upload-to: IRL-L2-Support/platform-architecture-docs
+          # skicka-tokencache-json: ${{ secrets.FOO }}
+          # google-client-id: ${{ secrets.BAR }}
+          # google-client-secret: ${{ secrets.BAZ }}

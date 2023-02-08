@@ -16,13 +16,13 @@ jobs:
       fail-fast: false
       matrix:
         projectName:
-          - D3D_2020
+          - URP
         #cloudRunnerCluster:
         #  - local-docker
         #  - local
         #projectPath:
         #  - test-project
-        # unityVersion:
+        unityVersion:
           # - 2021.3.16f1
           # - 2021.3.15f1
           # - 2021.3.14f1
@@ -44,7 +44,7 @@ jobs:
           # - 2021.2.0f1
           # - 2021.1.28f1 - не работает
           # - 2021.0.0f1 - так же
-          # - 2022.1.24f1
+          - 2022.1.24f1
           # - 2022.1.23f1
           # - 2022.1.22f1
           # - 2022.1.21f1
@@ -104,7 +104,7 @@ jobs:
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
+          #- iOS # Build an iOS player.
           - Android # Build an Android .apk.
           - WebGL # WebGL.
           - StandaloneWindows # Build a Windows standalone.
@@ -140,13 +140,13 @@ jobs:
       - uses: game-ci/unity-builder@v2
         with:
           #projectPath: ${{ matrix.projectPath }}
-          # unityVersion: ${{ matrix.unityVersion }}
+          unityVersion: ${{ matrix.unityVersion }}
           buildName: ${{ matrix.projectName }}
           targetPlatform: ${{ matrix.targetPlatform }}
           buildMethod: UnityBuilderAction.BuildScript.Build
           #customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           #cloudRunnerCluster: ${{ matrix.cloudRunnerCluster }}
-          # allowDirtyBuild: true
+          allowDirtyBuild: true
 
       ###########################
       #          Upload         #
@@ -159,7 +159,7 @@ jobs:
           
       - uses: Difegue/action-megacmd@master
         with:
-          args: put -c build/${{ matrix.targetPlatform }} /Unity_projects/${{ matrix.projectName }}/2/
+          args: put -c build/${{ matrix.targetPlatform }} /Unity_projects/${{ matrix.projectName }}/
         env:
           USERNAME: ${{ secrets.MEGA_USERNAME }}
           PASSWORD: ${{ secrets.MEGA_PASSWORD }}
